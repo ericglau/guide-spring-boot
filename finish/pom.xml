@@ -6,6 +6,7 @@
   <groupId>org.springframework</groupId>
   <artifactId>guide-spring-boot</artifactId>
   <version>0.1.0</version>
+  <packaging>war</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -60,13 +61,13 @@
       <plugin>
         <groupId>io.openliberty.tools</groupId>
         <artifactId>liberty-maven-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.2</version>
         <configuration>
           <!-- tag::appsDirectory[] -->
           <appsDirectory>apps</appsDirectory>
           <!-- end::appsDirectory[] -->
           <!-- tag::installAppPackages[] -->
-          <installAppPackages>spring-boot-project</installAppPackages>
+          <!-- <installAppPackages>spring-boot-project</installAppPackages> -->
           <!-- end::installAppPackages[] -->
           <!-- tag::include[] -->
           <include>minify,runnable</include>

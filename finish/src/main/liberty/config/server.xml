@@ -18,7 +18,7 @@
 
     <!-- tag::springBootApplication[] -->
     <springBootApplication id="guide-spring-boot" 
-                           location="thin-guide-spring-boot-0.1.0.jar"
+                           location="thin-guide-spring-boot.jar"
                            name="guide-spring-boot" />
     <!-- end::springBootApplication[] -->
 

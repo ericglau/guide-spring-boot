@@ -2,15 +2,21 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'io.openliberty.tools:liberty-gradle-plugin:3.0'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.2.RELEASE"
     }
 }
 
-plugins {
-  id "org.springframework.boot" version "2.2.2.RELEASE"
-}
+apply plugin: "org.springframework.boot"
+
+//plugins {
+//  id "org.springframework.boot" version "2.2.2.RELEASE"
+//}
 
 apply plugin: 'liberty'
 apply plugin: 'war'
@@ -23,14 +29,13 @@ tasks.withType(JavaCompile) {
 
 liberty {
     server {
-        name = "LibertyProjectServer"
-        looseApplication = false
+        looseApplication = true
         stripVersion = true
-    }
-}
 
-ext {
-    liberty.server.var.artifactId = "guide-spring-boot"
+        features {
+            acceptLicense = true
+        }
+    }
 }
 
 repositories {
@@ -38,6 +43,8 @@ repositories {
 }
 
 dependencies {
+    libertyRuntime 'com.ibm.websphere.appserver.runtime:wlp-javaee7:19.0.0.10'
+
     // provided dependencies
     providedCompile 'org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE'
     providedCompile 'org.springframework.boot:spring-boot-starter-actuator:2.2.2.RELEASE'

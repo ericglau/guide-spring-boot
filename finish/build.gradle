@@ -1,0 +1,49 @@
+// configure liberty-gradle-plugin 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'io.openliberty.tools:liberty-gradle-plugin:3.0'
+    }
+}
+
+plugins {
+  id "org.springframework.boot" version "2.2.2.RELEASE"
+}
+
+apply plugin: 'liberty'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+liberty {
+    server {
+        name = "LibertyProjectServer"
+        looseApplication = false
+        stripVersion = true
+    }
+}
+
+ext {
+    liberty.server.var.artifactId = "guide-spring-boot"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // provided dependencies
+    providedCompile 'org.springframework.boot:spring-boot-starter-web:2.2.2.RELEASE'
+    providedCompile 'org.springframework.boot:spring-boot-starter-actuator:2.2.2.RELEASE'
+
+    // test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.2.2.RELEASE'
+}
+
+clean.dependsOn 'libertyStop'

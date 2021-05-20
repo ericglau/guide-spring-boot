@@ -6,7 +6,7 @@
         <feature>servlet-4.0</feature>
     <!-- end::servlet[] -->
     <!-- tag::springboot[] -->
-        <feature>springBoot-2.0</feature>
+        <!-- <feature>springBoot-2.0</feature> -->
     <!-- end::springboot[] -->
     </featureManager>
 
@@ -17,9 +17,11 @@
     <!-- end::httpport[] -->
 
     <!-- tag::springBootApplication[] -->
-    <springBootApplication id="guide-spring-boot" 
+    <!-- <springBootApplication id="guide-spring-boot" 
                            location="thin-guide-spring-boot-0.1.0.jar"
-                           name="guide-spring-boot" />
+                           name="guide-spring-boot" /> -->
     <!-- end::springBootApplication[] -->
+
+    <webApplication location="guide-spring-boot-0.1.0.war" contextRoot="/"/>
 
 </server>
